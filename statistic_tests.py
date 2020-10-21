@@ -12,6 +12,7 @@ class BaseTest(ABC):
 
 
 class UniversalTest(BaseTest):
+
     # expected and variance denote the expected value
     # and variance for block lengths between 8 and 16
     # bits
@@ -85,8 +86,8 @@ class UniversalTest(BaseTest):
         k = (len(bits) - q * l) // l
         clk = UniversalTest.approx_variance_correction(l,k)
         sigma = clk*math.sqrt(UniversalTest.variance[l] / k)
-        # choice of 2.58 results in a rejection of 0.001
-        # could be set to 3.30 for a rejection rate of 0.01
+        # choice of 2.58 results in a rejection of 0.01
+        # could be set to 3.30 for a rejection rate of 0.001
         t1 = UniversalTest.expected[l] - 2.58 * sigma
         t2 = UniversalTest.expected[l] + 2.58 * sigma
         unitest = UniversalTest.universal_test(bits,l,q,k)
